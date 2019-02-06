@@ -1,0 +1,55 @@
+{
+  "name": "generator-jhipster-angular-material-integration",
+  "version": "0.0.0",
+  "description": "Module for installing the dependencies needed to use Angular Material in a Jhipster project.",
+  "keywords": [
+    "yeoman-generator",
+    "jhipster-module",
+    "jhipster-5"
+  ],
+  "homepage": "https://github.com/contribution-jhipster-uga/generator-jhipster-angular-material-integration",
+  "author": {
+    "name": "Contribution Jhipster UGA, Julien Courtial, Hugo Gros-Daillon, Cédric Lafrasse, Bastien Terrier (https://github.com/contribution-jhipster-uga)",
+    "email": "contribution.jhispter.uga@gmail.com",
+    "url": "https://github.com/contribution-jhipster-uga"
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contribution-jhipster-uga/generator-jhipster-angular-material-integration.git"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "generator-jhipster": ">=5.0.0",
+    "mkdirp": "0.5.1",
+    "semver": "5.3.0",
+    "shelljs": "0.5.3",
+    "yeoman-generator": "3.1.1"
+  },
+  "devDependencies": {
+    "eslint": "5.1.0",
+    "eslint-config-airbnb-base": "13.0.0",
+    "eslint-plugin-import": "2.13.0",
+    "fs-extra": "6.0.1",
+    "mocha": "5.2.0",
+    "yeoman-assert": "3.1.1",
+    "yeoman-test": "2.0.0"
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix",
+    "release": "git push && git push --tags && npm publish",
+    "release:patch": "npm version patch -a -m \"Update to %s\" && npm run release",
+    "release:minor": "npm version minor -a -m \"Update to %s\" && npm run release",
+    "release:major": "npm version major -a -m \"Update to %s\" && npm run release",
+    "test": "mocha test"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/contribution-jhipster-uga/generator-jhipster-angular-material-integration/issues"
+  }
+}
