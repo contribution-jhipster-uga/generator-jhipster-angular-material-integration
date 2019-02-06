@@ -44,10 +44,17 @@ npm update -g generator-jhipster-angular-material-integration
 
 # Usage
 
+First, you have to run the generator using the following command :
+
+```bash
+yo jhipster-angular-material-integration
+```
+Now you have all the necessary elements to use Angular Material's tools. (https://v6.material.angular.io/)
+
 # License
 
 MIT © [Contribution Jhipster UGA](https://github.com/contribution-jhipster-uga)
-
+Julien Courtial, Hugo Gros-Daillon, Cédric Lafrasse, Bastien Terrier
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-angular-material-integration.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-angular-material-integration
