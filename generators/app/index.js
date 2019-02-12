@@ -79,51 +79,52 @@ module.exports = class extends BaseGenerator {
         // this.log(`javaDir=${javaDir}`);
         // this.log(`resourceDir=${resourceDir}`);
         // this.log(`webappDir=${webappDir}`);
+        if (this.clientFramework === 'angularX' || this.clientFramework === 'angular2') {
+            this.template('jh-material.module.ts', `${webappDir}app/shared/jh-material.module.ts`);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/app.module.ts`,
+                needle: 'import * as moment from \'moment\';',
+                splicable: [`import { BrowserAnimationsModule } from '@angular/platform-browser/animations';`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/app.module.ts`,
+                needle: 'jhipster-needle-angular-add-module-import',
+                splicable: [`import 'hammerjs';`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/app.module.ts`,
+                needle: 'jhipster-needle-angular-add-module',
+                splicable: [`BrowserAnimationsModule,`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}content/scss/vendor.scss`,
+                needle: 'jhipster-needle-scss-add-vendor',
+                splicable: [`@import "~@angular/material/prebuilt-themes/indigo-pink.css";`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/shared/shared.module.ts`,
+                needle: '@NgModule({',
+                splicable: [`import {JhMaterialModule} from 'app/shared/jh-material.module';`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `package.json`,
+                needle: '"dependencies": {',
+                splicable: [``]
+            }, this);
 
-        this.template('jh-material.module.ts', `${webappDir}app/shared/jh-material.module.ts`);
-        jhipsterUtils.rewriteFile({
-            file: `${webappDir}app/app.module.ts`,
-            needle: 'import * as moment from \'moment\';',
-            splicable: [`import { BrowserAnimationsModule } from '@angular/platform-browser/animations';`]
-        }, this);
-        jhipsterUtils.rewriteFile({
-            file: `${webappDir}app/app.module.ts`,
-            needle: 'jhipster-needle-angular-add-module-import',
-            splicable: [`import 'hammerjs';`]
-        }, this);
-        jhipsterUtils.rewriteFile({
-            file: `${webappDir}app/app.module.ts`,
-            needle: 'jhipster-needle-angular-add-module',
-            splicable: [`BrowserAnimationsModule,`]
-        }, this);
-        jhipsterUtils.rewriteFile({
-            file: `${webappDir}content/scss/vendor.scss`,
-            needle: 'jhipster-needle-scss-add-vendor',
-            splicable: [`@import "~@angular/material/prebuilt-themes/indigo-pink.css";`]
-        }, this);
-        jhipsterUtils.rewriteFile({
-          file: `${webappDir}app/shared/shared.module.ts`,
-          needle: '@NgModule({',
-          splicable: [`import {JhMaterialModule} from 'app/shared/jh-material.module';`]
-        }, this);
-        jhipsterUtils.rewriteFile({
-          file: `package.json`,
-          needle: '"dependencies": {',
-          splicable: [``]
-        }, this);
+            var sharedModule = this.fs.read(`${webappDir}app/shared/shared.module.ts`);
+            var res = sharedModule.replace('imports: [', 'imports: [JhMaterialModule, ');
+            var toWrite = res.replace('exports: [', 'exports: [JhMaterialModule, ');
+            this.fs.write(`${webappDir}app/shared/shared.module.ts`, toWrite);
 
-        var sharedModule = this.fs.read(`${webappDir}app/shared/shared.module.ts`);
-        var res = sharedModule.replace('imports: [','imports: [JhMaterialModule, ');
-        var toWrite = res.replace('exports: [','exports: [JhMaterialModule, ');
-        this.fs.write(`${webappDir}app/shared/shared.module.ts`, toWrite);
-
-        var packageJson = this.fs.read(`package.json`);
-        var toWrite = packageJson.replace('"dependencies": {',`"dependencies": {
-      "hammerjs": "latest",
-      "@angular/material": "latest",
-      "@angular/cdk": "latest",
-      "@angular/animations": "latest",`);
-        this.fs.write(`package.json`, toWrite);
+            this.addNpmDependency("hammerjs", "latest");
+            this.addNpmDependency("@angular/material", "latest");
+            this.addNpmDependency("@angular/cdk", "latest");
+            this.addNpmDependency("@angular/animations", "latest");
+        }
+      else{
+        this.log("Error : You're not using a projet with Angular. You cannot install Angular Material to this projet.");
+      }
     }
 
 
