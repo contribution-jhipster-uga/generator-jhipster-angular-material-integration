@@ -51,7 +51,7 @@ yo jhipster-angular-material-integration
 ```
 Now you have all the necessary elements to use Angular Material's tools. (https://v6.material.angular.io/)
 
-# How ?
+# How ?
 
 This generator will first add a jh-material.module.ts file, which imports all material component, in Shared folder.
 This module will then be imported in shared.module.ts :
