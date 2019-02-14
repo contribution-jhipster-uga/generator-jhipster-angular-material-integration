@@ -1,6 +1,6 @@
 {
   "name": "generator-jhipster-angular-material-integration",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "This generator allows you to set up and download the dependencies necessary to use Angular Material.",
   "keywords": [
     "yeoman-generator",
