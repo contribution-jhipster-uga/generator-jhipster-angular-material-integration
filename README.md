@@ -55,7 +55,7 @@ First, you have to run the generator using the following command :
 ```bash
 yo jhipster-angular-material-integration
 ```
-Now you have all the necessary elements to use Angular Material's tools : [Angular Material Website]. (https://v6.material.angular.io/)
+Now you have all the necessary elements to use Angular Material's tools : [Angular Material Website](https://v6.material.angular.io/).
 
 # How
 
