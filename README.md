@@ -51,6 +51,23 @@ yo jhipster-angular-material-integration
 ```
 Now you have all the necessary elements to use Angular Material's tools. (https://v6.material.angular.io/)
 
+# How ?
+
+This generator will first add a jh-material.module.ts file, which imports all material component, in Shared folder.
+This module will then be imported in shared.module.ts :
+```bash
+import {JhMaterialModule} from \'app/shared/jh-material.module\';
+```
+BrowserAnimationsModule and hammerjs (which is not necesary but useful for some components) are imported in app.module.ts file :
+```bash
+import { BrowserAnimationsModule } from \'@angular/platform-browser/animations\';
+import \'hammerjs\';
+```
+Then, it imports a css-theme in your vendor.scss.
+
+Finally, it adds hammerjs, @angular/material, @angular/cdk and @angular/animations to your package.json and launch an install.
+
+
 # License
 
 MIT © [Contribution Jhipster UGA](https://github.com/contribution-jhipster-uga)

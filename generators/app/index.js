@@ -106,16 +106,11 @@ module.exports = class extends BaseGenerator {
                 needle: '@NgModule({',
                 splicable: [`import {JhMaterialModule} from 'app/shared/jh-material.module';`]
             }, this);
-            jhipsterUtils.rewriteFile({
-                file: `package.json`,
-                needle: '"dependencies": {',
-                splicable: [``]
-            }, this);
 
-            var sharedModule = this.fs.read(`${webappDir}app/shared/shared.module.ts`);
+            var sharedModule = this.fs.readSync(`${webappDir}app/shared/shared.module.ts`);
             var res = sharedModule.replace('imports: [', 'imports: [JhMaterialModule, ');
             var toWrite = res.replace('exports: [', 'exports: [JhMaterialModule, ');
-            this.fs.write(`${webappDir}app/shared/shared.module.ts`, toWrite);
+            this.fs.writeSync(`${webappDir}app/shared/shared.module.ts`, toWrite);
 
             this.addNpmDependency('hammerjs', 'latest');
             this.addNpmDependency('@angular/material', 'latest');
