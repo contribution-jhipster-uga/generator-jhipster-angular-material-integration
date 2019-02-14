@@ -10,7 +10,7 @@ This generator allows you to set up and download the dependencies necessary to u
 
 ![Sample application](image/sample-application.png)
 
-You can find a sample application using this generator [here](https://github.com/contribution-jhipster-uga/sample-application-angular-material)
+You can find a sample application using this generator [here](https://github.com/contribution-jhipster-uga/sample-application-angular-material).
 
 # Prerequisites
 
@@ -55,7 +55,7 @@ First, you have to run the generator using the following command :
 ```bash
 yo jhipster-angular-material-integration
 ```
-Now you have all the necessary elements to use Angular Material's tools. (https://v6.material.angular.io/)
+Now you have all the necessary elements to use Angular Material's tools : [Angular Material Website]. (https://v6.material.angular.io/)
 
 # How
 
@@ -78,7 +78,7 @@ Finally, it adds hammerjs, @angular/material, @angular/cdk and @angular/animatio
 MIT © [Contribution Jhipster UGA](https://github.com/contribution-jhipster-uga)
 Julien Courtial, Hugo Gros-Daillon, Cédric Lafrasse, Bastien Terrier
 
-This generator has been inspired by the tutorial of Cyril Casaucau (https://medium.com/@cyril.casaucau/how-to-add-angular-material-on-an-jhipster-5-x-app-97c9569c9f97).
+This generator has been inspired by the tutorial of [Cyril Casaucau](https://medium.com/@cyril.casaucau/how-to-add-angular-material-on-an-jhipster-5-x-app-97c9569c9f97).
 
 [npm-image]: https://img.shields.io/npm/v/generator-jhipster-angular-material-integration.svg
 [npm-url]: https://npmjs.org/package/generator-jhipster-angular-material-integration
