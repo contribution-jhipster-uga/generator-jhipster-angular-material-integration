@@ -112,10 +112,10 @@ module.exports = class extends BaseGenerator {
             var toWrite = res.replace('exports: [', 'exports: [JhMaterialModule, ');
             this.fs.write(`${webappDir}app/shared/shared.module.ts`, toWrite);
 
+            this.addNpmDependency('@angular/animations', 'latest');
             this.addNpmDependency('hammerjs', 'latest');
             this.addNpmDependency('@angular/material', 'latest');
             this.addNpmDependency('@angular/cdk', 'latest');
-            this.addNpmDependency('@angular/animations', 'latest');
         }
       else{
         this.log("Error : You cannot install Angular Material to this project because you are not using Angular.");
