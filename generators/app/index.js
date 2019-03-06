@@ -92,11 +92,6 @@ module.exports = class extends BaseGenerator {
                 splicable: [`import 'hammerjs';`]
             }, this);
             jhipsterUtils.rewriteFile({
-                file: `${webappDir}app/app.module.ts`,
-                needle: 'jhipster-needle-angular-add-module',
-                splicable: [`BrowserAnimationsModule,`]
-            }, this);
-            jhipsterUtils.rewriteFile({
                 file: `${webappDir}content/scss/vendor.scss`,
                 needle: 'jhipster-needle-scss-add-vendor',
                 splicable: [`@import "~@angular/material/prebuilt-themes/indigo-pink.css";`]
@@ -106,11 +101,32 @@ module.exports = class extends BaseGenerator {
                 needle: '@NgModule({',
                 splicable: [`import {JhMaterialModule} from 'app/shared/jh-material.module';`]
             }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}index.html`,
+                needle: 'jhipster-needle-add-resources-to-root',
+                splicable: [`<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/shared/shared-libs.module.ts`,
+                needle: '@NgModule({',
+                splicable: [`import { ReactiveFormsModule } from '@angular/forms';`]
+            }, this);
 
             var sharedModule = this.fs.read(`${webappDir}app/shared/shared.module.ts`);
             var res = sharedModule.replace('imports: [', 'imports: [JhMaterialModule, ');
             var toWrite = res.replace('exports: [', 'exports: [JhMaterialModule, ');
             this.fs.write(`${webappDir}app/shared/shared.module.ts`, toWrite);
+
+            var sharedLibsModule = this.fs.read(`${webappDir}app/shared/shared-libs.module.ts`);
+            var res = sharedLibsModule.replace('    ],exports: [', ',ReactiveFormsModule],exports: [');
+            var toWrite = res.replace('exports: [', 'exports: [ReactiveFormsModule, ');
+            this.fs.write(`${webappDir}app/shared/shared-libs.module.ts`, toWrite);
+
+            var appModule = this.fs.read(`${webappDir}app/app.module.ts`);
+            var res = appModule.replace('BrowserModule,', `BrowserModule,
+        BrowserAnimationsModule,`);
+            this.fs.write(`${webappDir}app/app.module.ts`, res);
+
 
             this.addNpmDependency('@angular/animations', 'latest');
             this.addNpmDependency('hammerjs', 'latest');
