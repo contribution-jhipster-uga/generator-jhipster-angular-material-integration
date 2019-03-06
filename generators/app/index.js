@@ -124,14 +124,16 @@ module.exports = class extends BaseGenerator {
 
             var appModule = this.fs.read(`${webappDir}app/app.module.ts`);
             var res = appModule.replace('BrowserModule,', `BrowserModule,
-        BrowserAnimationsModule,`);
+        BrowserAnimationsModule,
+        FlexLayoutModule,`);
             this.fs.write(`${webappDir}app/app.module.ts`, res);
-
 
             this.addNpmDependency('@angular/animations', 'latest');
             this.addNpmDependency('hammerjs', 'latest');
             this.addNpmDependency('@angular/material', 'latest');
             this.addNpmDependency('@angular/cdk', 'latest');
+            this.addNpmDependency('@angular/flex-layout', 'latest');
+
         }
       else{
         this.log("Error : You cannot install Angular Material to this project because you are not using Angular.");
