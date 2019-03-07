@@ -83,8 +83,13 @@ module.exports = class extends BaseGenerator {
             this.template('jh-material.module.ts', `${webappDir}app/shared/jh-material.module.ts`);
             jhipsterUtils.rewriteFile({
                 file: `${webappDir}app/app.module.ts`,
-                needle: 'import * as moment from \'moment\';',
+                needle: 'jhipster-needle-angular-add-module-import',
                 splicable: [`import { BrowserAnimationsModule } from '@angular/platform-browser/animations';`]
+            }, this);
+            jhipsterUtils.rewriteFile({
+                file: `${webappDir}app/app.module.ts`,
+                needle: 'jhipster-needle-angular-add-module-import',
+                splicable: [`import {FlexLayoutModule} from '@angular/flex-layout';`]
             }, this);
             jhipsterUtils.rewriteFile({
                 file: `${webappDir}app/app.module.ts`,

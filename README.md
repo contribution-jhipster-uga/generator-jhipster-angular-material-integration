@@ -56,7 +56,7 @@ First, you have to run the generator using the following command :
 yo jhipster-angular-material-integration
 ```
 
-Please check that @angular/animations, @angular/cdk, @angular/material and hammerjs has been added to your package.json. If not, please add it yourself with version "latest" (example: "@angular/animations": "latest") and execute npm install.
+Please check that @angular/animations, @angular/cdk, @angular/flex-layout, @angular/material and hammerjs has been added to your package.json. If not, please add it yourself with version "latest" (example: "@angular/animations": "latest") and execute npm install.
 Now you have all the necessary elements to use Angular Material's tools : [Angular Material Website](https://v6.material.angular.io/).
 
 # How
@@ -73,7 +73,7 @@ import 'hammerjs';
 ```
 Then, it imports a css-theme in your vendor.scss.
 
-Finally, it adds hammerjs, @angular/material, @angular/cdk and @angular/animations to your package.json and launch an install.
+Finally, it adds hammerjs, @angular/material, @angular/flex-layout, @angular/cdk and @angular/animations to your package.json and launch an install.
 
 # License
 
